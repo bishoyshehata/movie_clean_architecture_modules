@@ -1,0 +1,4 @@
+name: movie_clean_architecture_modules
+packages:
+  - core/**
+  - features/**
