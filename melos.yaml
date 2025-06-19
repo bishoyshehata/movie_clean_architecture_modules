@@ -16,3 +16,9 @@ command:
 
     dev_dependencies:
       flutter_lints: ^5.0.0
+
+scripts:
+  cleanAndBootstrap: melos clean && melos bootstrap
+  test: flutter test
+  update: flutter pub outdated
+  upgrade: flutter pub upgrade --major-versions
