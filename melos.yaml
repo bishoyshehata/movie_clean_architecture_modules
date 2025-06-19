@@ -1,0 +1,24 @@
+name: movie_clean_architecture_modules
+packages:
+  - core/**
+  - features/**
+
+command:
+  bootstrap:
+    environment:
+      sdk: ^3.8.1
+      flutter: ">=1.17.0"
+
+
+    dependencies:
+     dio: ^5.8.0+1
+
+
+    dev_dependencies:
+      flutter_lints: ^5.0.0
+
+scripts:
+  cleanAndBootstrap: melos clean && melos bootstrap
+  test: melos exec --concurrency=1 -- flutter test   #  the previous command is usede for test all tests in packages one by one
+  update: flutter pub outdated
+  upgrade: flutter pub upgrade --major-versions
