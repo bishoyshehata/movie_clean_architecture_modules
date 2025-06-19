@@ -2,3 +2,17 @@ name: movie_clean_architecture_modules
 packages:
   - core/**
   - features/**
+
+command:
+  bootstrap:
+    environment:
+      sdk: ^3.8.1
+      flutter: ">=1.17.0"
+
+
+    dependencies:
+     dio: ^5.8.0+1
+
+
+    dev_dependencies:
+      flutter_lints: ^5.0.0
