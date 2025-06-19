@@ -19,6 +19,6 @@ command:
 
 scripts:
   cleanAndBootstrap: melos clean && melos bootstrap
-  test: flutter test
+  test: melos exec --concurrency=1 -- flutter test   #  the previous command is usede for test all tests in packages one by one
   update: flutter pub outdated
   upgrade: flutter pub upgrade --major-versions
