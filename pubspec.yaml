@@ -10,6 +10,8 @@ environment:
   sdk: ^3.8.1
 
 dependencies:
+  datastore:
+    path: core/datastore
   app_settings:
     path: features/settings/app_settings
   get_it:

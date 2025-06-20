@@ -1,4 +1,5 @@
 import 'package:app_settings/provider/app_settings_provider.dart';
+import 'package:datastore/provider/session_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movie_clean_architecture_modules/di/injection.dart';
@@ -6,7 +7,7 @@ import 'package:movie_clean_architecture_modules/di/injection.dart';
 void main() {
 
   WidgetsFlutterBinding.ensureInitialized();
-  configureDependencies(Environment.dev);
+  configureDependencies(Environment.prod);
   runApp(const MyApp());
 }
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-   MyHomePage({super.key, required this.title});
+   const MyHomePage({super.key, required this.title});
   final String title;
 
   @override
@@ -37,13 +38,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final appSettingsProvider = getIt<AppSettingsProvider>();
+  final sessionProvider = getIt<SessionProvider>();
 
-  int _counter = 0;
 
   void _incrementCounter() {
     setState(() {
 
-      _counter++;
     });
   }
 
@@ -64,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
              Text('app language ${appSettingsProvider.getAppLanguage()}'),
+             Text('sessionProvidere ${sessionProvider.getClientId()}'),
             Text('app theme ${appSettingsProvider.getThemeType()}'),
 
           ],
