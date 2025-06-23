@@ -10,6 +10,12 @@ environment:
   sdk: ^3.8.1
 
 dependencies:
+  datastore:
+    path: core/datastore
+  app_settings:
+    path: features/settings/app_settings
+  get_it:
+  injectable:
   flutter:
     sdk: flutter
 
@@ -17,6 +23,8 @@ dependencies:
   melos: ^6.3.3
 
 dev_dependencies:
+  json_serializable:
+  injectable_generator:
   flutter_test:
     sdk: flutter
 

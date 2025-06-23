@@ -1,4 +1,4 @@
-name: data
+name: extensions
 description: "A new Flutter package project."
 version: 0.0.1
 homepage:
@@ -8,8 +8,6 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  dio: ^5.8.0+1
-  pretty_dio_logger: ^1.4.0
   flutter:
     sdk: flutter
 

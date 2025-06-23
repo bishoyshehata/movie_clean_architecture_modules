@@ -27,3 +27,22 @@ install melos :
 5- --> dart pub upgrade --major-versions
 6- --> open ~/.zshrc
 7- --> export PATH="$JAVA_HOME/bin:$PATH:$HOME/.pub-cache/bin"  //copy and paste it in ~/.zshrc
+
+=============== to generate injection.config.dart =============
+1- --> dart run build_runner watch --delete-conflicting-outputs
+2- --> build->flutter->buildApk(optional if the file is not generated after running the command line above)
+
+
+=============== login service using retrofit ===========
+1- --> add retrofit & retrofit generator 
+2- --> add build_runner to generate  login_service.g.dart
+3- --> dart run build_runner watch --delete-conflicting-outputs 
+
+while making the response of login we should add json annotation & json_serializable 
+1- add from & to Json  
+2- -->  generate  login_response.g.dart
+3- --> dart run build_runner watch --delete-conflicting-outputs 
+
+
+===== for any response model you should use extensions so you can avoid nullable value 
+1- ---> create extensions package >>> flutter create --template=package core/extensions
