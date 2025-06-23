@@ -20,12 +20,15 @@ class _LoginService implements LoginService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<LoginResponse>> login(String email, String password) async {
+  Future<HttpResponse<LoginResponse>> login(
+    String email,
+    String password,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = {'email': email, 'password': password};
-    final _options = _setStreamType<List<LoginResponse>>(
+    final _options = _setStreamType<HttpResponse<LoginResponse>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -35,17 +38,16 @@ class _LoginService implements LoginService {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<LoginResponse> _value;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late LoginResponse _value;
     try {
-      _value = _result.data!
-          .map((dynamic i) => LoginResponse.fromJson(i as Map<String, dynamic>))
-          .toList();
+      _value = LoginResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
