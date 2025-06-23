@@ -42,3 +42,7 @@ while making the response of login we should add json annotation & json_serializ
 1- add from & to Json  
 2- -->  generate  login_response.g.dart
 3- --> dart run build_runner watch --delete-conflicting-outputs 
+
+
+===== for any response model you should use extensions so you can avoid nullable value 
+1- ---> create extensions package >>> flutter create --template=package core/extensions

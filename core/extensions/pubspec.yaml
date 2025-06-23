@@ -1,7 +1,6 @@
-name: login
+name: extensions
 description: "A new Flutter package project."
 version: 0.0.1
-publish_to: none
 homepage:
 
 environment:
@@ -9,25 +8,10 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  dio: ^5.8.0+1
-  retrofit: ^4.4.2
-  json_annotation: ^4.9.0
-  dartz: ^0.10.1
-  extensions:
-    path: ../../../core/extensions
-  domain:
-    path: ../../../core/domain
-  datastore:
-    path: ../../../core/datastore
-  data:
-    path: ../../../core/data
   flutter:
     sdk: flutter
 
 dev_dependencies:
-  retrofit_generator: ^9.2.0
-  build_runner: ^2.5.3
-  json_serializable: ^6.9.5
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
