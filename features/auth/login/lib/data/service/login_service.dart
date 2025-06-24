@@ -1,6 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:retrofit/error_logger.dart';
-import 'package:retrofit/http.dart';
 import '../response/login_response.dart';
 import 'package:retrofit/retrofit.dart';
 part 'login_service.g.dart';

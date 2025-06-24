@@ -46,3 +46,7 @@ while making the response of login we should add json annotation & json_serializ
 
 ===== for any response model you should use extensions so you can avoid nullable value 
 1- ---> create extensions package >>> flutter create --template=package core/extensions
+2- ---> after creating and handle nulls comming from api 
+===== add connectivity plus =============================
+1- add it in data package // to check if the user is using internet or not 
+2- create connctivity_info.dart in network
