@@ -51,3 +51,8 @@ while making the response of login we should add json annotation & json_serializ
 1- add it in data package // to check if the user is using internet or not 
 2- create connctivity_info.dart in network
 ===== adding base usecase in domain package & implement login use case 
+
+/////////// start of advanced handling for errors 
+1- create error handler in data package contains (datasource , app_strings , status_codes ,response_message ,dio_error_handler, data_source_extension   )
+
+2- 
