@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movie_clean_architecture_modules/di/injection.dart';
 
-void main() {
+Future<void> main() async{
 
   WidgetsFlutterBinding.ensureInitialized();
-  configureDependencies(Environment.prod);
+  await configureDependencies(Environment.prod);
   runApp(const MyApp());
 }
 

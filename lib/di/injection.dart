@@ -8,9 +8,9 @@ import 'package:movie_clean_architecture_modules/di/injection.config.dart';
 final getIt = GetIt.instance;
 
 @InjectableInit()
-void configureDependencies(String? environment) {
-  getIt.init(environment: environment);
-  configureAppSettingsDependencies(getIt, environment);
-  configureDataStoreDependencies(getIt, environment);
+Future<void> configureDependencies(String? environment) async {
+ await getIt.init(environment: environment);
+ await configureAppSettingsDependencies(getIt, environment);
+ await configureDataStoreDependencies(getIt, environment);
   configureCoreDataDependencies(getIt, environment);
 }
