@@ -62,4 +62,4 @@ while making the response of login we should add json annotation & json_serializ
 4- create app_preferences  in core/appstore package in provider directory 
 !!!!! not all parms in the shared preferences(which user prefer : language , constants : base url ) but accessToken will be in session_provider.
 5- we implement the preferences provider as setters & getters 
-6-
+6- make preferences_strings for the keys  for removing any hard code

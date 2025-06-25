@@ -1,27 +1,29 @@
 
 import 'package:datastore/provider/preferences/preferences_provider.dart';
+import 'package:datastore/provider/preferences/preferences_strings.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferencesProviderImpl implements PreferencesProvider {
+  final SharedPreferences _sharedPreferences ;
+  PreferencesProviderImpl(this._sharedPreferences);
+
   @override
   String getAppLanguage() {
-    // TODO: implement getAppLanguage
-    throw UnimplementedError();
+    return _sharedPreferences.getString(PreferencesStrings.appLanguageKey) ?? PreferencesStrings.defaultAppLanguageKey;
+  }
+  @override
+  void setAppLanguage(String language) {
+    _sharedPreferences.setString(PreferencesStrings.appLanguageKey,language);
   }
 
   @override
   String getBaseUrl() {
-    // TODO: implement getBaseUrl
-    throw UnimplementedError();
-  }
+    return _sharedPreferences.getString(PreferencesStrings.baseUrlKey) ?? PreferencesStrings.defaultBaseUrlKey;
 
-  @override
-  void setAppLanguage(String language) {
-    // TODO: implement setAppLanguage
   }
-
   @override
   void setBaseUrl(String baseUrl) {
-    // TODO: implement setBaseUrl
+    _sharedPreferences.setString(PreferencesStrings.baseUrlKey,baseUrl);
   }
   
 }
