@@ -15,6 +15,7 @@ dependencies:
   connectivity_plus: ^6.1.4
   injectable: ^2.5.0
   shared_preferences: ^2.5.3
+  get_it: ^8.0.3
 
   datastore:
     path: ../../core/datastore
@@ -25,6 +26,7 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
+  injectable_generator: ^2.7.0
   build_runner: ^2.5.3
   flutter_test:
     sdk: flutter
