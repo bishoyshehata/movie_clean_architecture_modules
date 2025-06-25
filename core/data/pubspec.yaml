@@ -16,6 +16,8 @@ dependencies:
   injectable: ^2.5.0
   shared_preferences: ^2.5.3
 
+  datastore:
+    path: ../../core/datastore
   domain:
     path: ../../core/domain
 
