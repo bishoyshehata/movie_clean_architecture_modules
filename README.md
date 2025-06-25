@@ -65,3 +65,6 @@ while making the response of login we should add json annotation & json_serializ
 5- we implement the preferences provider as setters & getters 
 6- make preferences_strings for the keys  for removing any hard code
 7- make sure that you separate the instance of shared preferences & sharedPreferencesProvider to dataStore package for more isolation
+
+======== creating login module 
+1- what we have done in any module is that any injectable arguments we get instance of it  in the module 

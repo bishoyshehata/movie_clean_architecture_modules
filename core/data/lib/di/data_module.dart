@@ -20,15 +20,15 @@ abstract class DataModule {
 
 
   @lazySingleton // when we need it ,we have to provide it
-  Future<Dio> dio(
+  Dio dio(
     @Named(DataModuleStrings.baseUrlKey) String baseUrl,
-    @Named(DataModuleStrings.accessTokenKey) Future<String> accessToken,
-    @Named(DataModuleStrings.languageKey) Future<String> language,
-  ) async {
+    @Named(DataModuleStrings.accessTokenKey) String accessToken,
+    @Named(DataModuleStrings.languageKey) String language,
+  )  {
     final dioFactory = DioFactory(
       baseUrl: baseUrl,
-      accessToken: await accessToken,
-      language: await language,
+      accessToken:  accessToken,
+      language:  language,
     );
     return dioFactory.getDio();
   }

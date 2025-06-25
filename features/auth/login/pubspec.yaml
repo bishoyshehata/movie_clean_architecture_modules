@@ -13,6 +13,7 @@ dependencies:
   retrofit: ^4.4.2
   json_annotation: ^4.9.0
   dartz: ^0.10.1
+  injectable: ^2.5.0
   extensions:
     path: ../../../core/extensions
   domain:
@@ -26,6 +27,7 @@ dependencies:
 
 dev_dependencies:
   retrofit_generator: ^9.2.0
+  injectable_generator: ^2.7.0
   build_runner: ^2.5.3
   json_serializable: ^6.9.5
   flutter_test:

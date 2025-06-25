@@ -9,8 +9,6 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i687;
-
 import 'package:data/di/data_module.dart' as _i202;
 import 'package:datastore/provider/preferences/preferences_provider.dart'
     as _i940;
@@ -35,16 +33,16 @@ extension GetItInjectableX on _i174.GetIt {
       () => dataModule.provideBaseUrl(gh<_i940.PreferencesProvider>()),
       instanceName: 'BaseUrl',
     );
-    gh.lazySingletonAsync<_i361.Dio>(
-      () => dataModule.dio(
-        gh<String>(instanceName: 'BaseUrl'),
-        gh<_i687.Future<String>>(instanceName: 'AccessToken'),
-        gh<_i687.Future<String>>(instanceName: 'Language'),
-      ),
-    );
     gh.factory<String>(
       () => dataModule.provideLanguage(gh<_i940.PreferencesProvider>()),
       instanceName: 'Language',
+    );
+    gh.lazySingleton<_i361.Dio>(
+      () => dataModule.dio(
+        gh<String>(instanceName: 'BaseUrl'),
+        gh<String>(instanceName: 'AccessToken'),
+        gh<String>(instanceName: 'Language'),
+      ),
     );
     return this;
   }

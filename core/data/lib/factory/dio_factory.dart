@@ -9,7 +9,7 @@ class DioFactory {
   final String language;
   DioFactory({required this.baseUrl,required this.accessToken , required this.language});
 
-  Future<Dio> getDio() async {
+  Dio getDio()  {
     Dio dio = Dio();
     Map<String, String> headers = {
       contentType: applicationJson,
