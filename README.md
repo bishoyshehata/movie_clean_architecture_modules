@@ -64,3 +64,4 @@ while making the response of login we should add json annotation & json_serializ
 !!!!! not all parms in the shared preferences(which user prefer : language , constants : base url ) but accessToken will be in session_provider.
 5- we implement the preferences provider as setters & getters 
 6- make preferences_strings for the keys  for removing any hard code
+7- make sure that you separate the instance of shared preferences & sharedPreferencesProvider to dataStore package for more isolation

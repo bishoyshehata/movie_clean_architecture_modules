@@ -1,20 +1,12 @@
 import 'package:data/factory/dio_factory.dart';
 import 'package:datastore/provider/preferences/preferences_provider.dart';
-import 'package:datastore/provider/preferences/preferences_provider_impl.dart';
 import 'package:datastore/provider/sessions/session_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'data_module_strings.dart';
 
 @module
 abstract class DataModule {
-  @preResolve // before using any dependency from this module just make sure of creating instance of sharedPreferences
-  Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
-
-  @lazySingleton
-  PreferencesProvider providePreferencesProviderImpl(SharedPreferences prefs)=>PreferencesProviderImpl(prefs);
 
   //provide base url
   @Named(DataModuleStrings.baseUrlKey) // a tag fot this String
