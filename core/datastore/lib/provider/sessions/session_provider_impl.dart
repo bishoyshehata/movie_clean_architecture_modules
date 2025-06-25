@@ -1,4 +1,4 @@
-import 'package:datastore/provider/session_provider.dart';
+import 'package:datastore/provider/sessions/session_provider.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: SessionProvider, env: [Environment.prod])

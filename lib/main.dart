@@ -1,5 +1,5 @@
 import 'package:app_settings/provider/app_settings_provider.dart';
-import 'package:datastore/provider/session_provider.dart';
+import 'package:datastore/provider/sessions/session_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movie_clean_architecture_modules/di/injection.dart';

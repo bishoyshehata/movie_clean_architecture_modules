@@ -49,10 +49,17 @@ while making the response of login we should add json annotation & json_serializ
 2- ---> after creating and handle nulls comming from api 
 ===== add connectivity plus =============================
 1- add it in data package // to check if the user is using internet or not 
-2- create connctivity_info.dart in network
-===== adding base usecase in domain package & implement login use case 
+2- create connectivity_info.dart in network
+===== adding base useCase in domain package & implement login use case 
 
 /////////// start of advanced handling for errors 
 1- create error handler in data package contains (datasource , app_strings , status_codes ,response_message ,dio_error_handler, data_source_extension   )
 
-2- 
+===== Integrating sharedPreferences & Network di - the memory Nexus
+1- add sharedPreferences package , injectable , build_runner in core/data package 
+2- create data_module that will be sharable between all the app 
+3- we add in data_module the important parameters that i want to share and the instance of dio that i will use to share with dio_factory
+4- create app_preferences  in core/appstore package in provider directory 
+!!!!! not all parms in the shared preferences(which user prefer : language , constants : base url ) but accessToken will be in session_provider.
+5- we implement the preferences provider as setters & getters 
+6-
