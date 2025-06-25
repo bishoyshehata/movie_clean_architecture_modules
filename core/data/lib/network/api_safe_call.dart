@@ -6,7 +6,7 @@ import 'package:data/network_info/network_info.dart';
 import 'package:domain/entities/failure.dart';
 
 Future<Either<Failure, T >> safeApiCall<T>(NetworkInfo networkInfo , Future<T> Function() apiCall) async {
-  // if(await networkInfo.isConnected){
+  if(await networkInfo.isConnected){
     try
     {
       final response = await apiCall();
@@ -14,10 +14,10 @@ Future<Either<Failure, T >> safeApiCall<T>(NetworkInfo networkInfo , Future<T> F
     }catch(error){
       return Left(Errorhandler.handle(error).failure);
     }
-  // }
-  // else {
-  //   // no internet connection
-  //   return Left(DataSource.noInternetConnection.getFailure());
-  //
-  // }
+  }
+  else {
+    // no internet connection
+    return Left(DataSource.noInternetConnection.getFailure());
+
+  }
 }
