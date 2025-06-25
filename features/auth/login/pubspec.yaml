@@ -22,6 +22,8 @@ dependencies:
     path: ../../../core/datastore
   data:
     path: ../../../core/data
+  movie_clean_architecture_modules:
+    path: ../../..
   flutter:
     sdk: flutter
 

@@ -3,4 +3,4 @@ import 'package:injectable/injectable.dart';
 import 'package:login/data/di/injection.config.dart';
 
 @InjectableInit()
-Future<void> configureLoginFeatureDependencies(GetIt getIt, String? environment) => getIt.init(environment: environment);
+Future<void> configureLoginFeatureDependencies(GetIt getIt, String? environment)async => getIt.init(environment: environment);
