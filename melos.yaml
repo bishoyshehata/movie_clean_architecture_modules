@@ -20,6 +20,7 @@ command:
      dartz: ^0.10.1
      connectivity_plus: ^6.1.4
      shared_preferences: ^2.5.3
+     uuid: ^4.5.1
 
     dev_dependencies:
       json_serializable: ^6.9.5
