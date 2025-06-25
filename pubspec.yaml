@@ -16,6 +16,8 @@ dependencies:
     path: core/datastore
   app_settings:
     path: features/settings/app_settings
+  login:
+    path: features/auth/login
   get_it:
   injectable:
   flutter:

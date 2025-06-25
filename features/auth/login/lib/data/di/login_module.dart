@@ -1,4 +1,3 @@
-
 import 'package:data/network_info/network_info.dart';
 import 'package:data/network_info/network_info_impl.dart';
 import 'package:dio/dio.dart';
@@ -7,8 +6,8 @@ import 'package:login/data/datasource/login_datasource_impl.dart';
 import 'package:login/data/repository/login_repository_impl.dart';
 import 'package:login/data/service/login_service.dart';
 import 'package:login/domain/repository/login_repository.dart';
-
-import '../data/datasource/login_datasource.dart';
+import 'package:login/domain/usecase/login_usecase_impl.dart';
+import '../datasource/login_datasource.dart';
 
 @module
 abstract class LoginModule {
@@ -27,5 +26,9 @@ abstract class LoginModule {
   @lazySingleton // when we need it ,we have to provide it
   LoginRepository provideLoginRepository(LoginDataSource loginDataSource){
     return LoginRepositoryImpl(loginDataSource);
+  }
+  @lazySingleton // when we need it ,we have to provide it
+  LoginUseCaseImpl provideLoginUseCase(LoginRepository loginRepository){
+    return LoginUseCaseImpl(loginRepository);
   }
 }
