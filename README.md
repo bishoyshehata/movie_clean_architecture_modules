@@ -33,7 +33,7 @@ install melos :
 2- --> build->flutter->buildApk(optional if the file is not generated after running the command line above)
 
 
-=============== login service using retrofit ===========
+========================== login service using retrofit =======================
 1- --> add retrofit & retrofit generator 
 2- --> add build_runner to generate  login_service.g.dart
 3- --> dart run build_runner watch --delete-conflicting-outputs 
@@ -68,3 +68,8 @@ while making the response of login we should add json annotation & json_serializ
 
 ======== creating login module 
 1- what we have done in any module is that any injectable arguments we get instance of it  in the module 
+
+========================== finish login service using retrofit =======================
+
+========================== begin the presentation layer ==============================
+1- here we will use Bloc 
