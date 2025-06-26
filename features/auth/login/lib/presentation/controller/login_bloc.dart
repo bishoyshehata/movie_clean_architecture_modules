@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:login/data/request/login_request.dart';
 import 'package:login/domain/usecase/login_usecase_impl.dart';
 import 'package:login/presentation/controller/login_events.dart';
 import 'package:login/presentation/controller/login_states.dart';
@@ -30,8 +31,33 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
       );
     });
     // handle LoginButtonPressed event
-    on<LoginButtonPressed>((event, emit) {
-      
+    on<LoginButtonPressed>((event, emit) async{
+      final userNameError = validateUserName(event.userName);
+      final passwordError = validateUserName(event.password);
+
+      if(userNameError ==null && passwordError ==null ){
+        //it's safe to call login api
+
+        emit(LoginLoading());
+
+        final result = await loginUseCase.execute(LoginRequest(userNameError!, passwordError!));
+        result.fold((failure){
+          emit(LoginError(
+              errorMessage: failure.message
+          ));
+          print("Error ${failure.message}");
+          print("Error ${failure.statusCode}");
+        }, (response){
+          emit(LoginSuccess(loginModel: response));
+          print("success $response");
+          print("success ${response.name}");
+
+        });
+      }else {
+        //it's invalid
+        emit(LoginInvalid(userNameError:userNameError,passwordError: passwordError ));
+      }
+
     });
   }
 }
