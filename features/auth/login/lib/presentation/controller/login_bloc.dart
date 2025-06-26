@@ -8,10 +8,48 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
 
   LoginBloc(this.loginUseCase) : super(LoginInitial()) {
     // handle UserNameChanged event
-    on<UserNameChanged>((event, emit) {});
+    on<UserNameChanged>((event, emit) {
+      final userNameError = validateUserName(event.userName);
+
+      emit(
+        LoginInvalid(
+          userNameError: userNameError,
+          passwordError: (state is LoginInvalid) ? state.passwordError : null,
+        ),
+      );
+    });
     // handle PasswordChanged event
-    on<PasswordChanged>((event, emit) {});
+    on<PasswordChanged>((event, emit) {
+      final passwordError = validateUserName(event.password);
+
+      emit(
+        LoginInvalid(
+          passwordError: passwordError,
+          userNameError: (state is LoginInvalid) ? state.userNameError : null,
+        ),
+      );
+    });
     // handle LoginButtonPressed event
-    on<LoginButtonPressed>((event, emit) {});
+    on<LoginButtonPressed>((event, emit) {
+      
+    });
   }
+}
+
+String? validateUserName(String userName) {
+  if (userName.isEmpty) {
+    return "UserName cannot be empty";
+  } else if (userName.length < 6) {
+    return "UserName cannot be less than 6 characters";
+  }
+  return null;
+}
+
+String? validatePassword(String password) {
+  if (password.isEmpty) {
+    return "Password cannot be empty";
+  } else if (password.length < 6) {
+    return "password cannot be less than 6 characters";
+  }
+  return null;
 }
