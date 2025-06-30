@@ -1,6 +1,6 @@
 
 class LoginRequest {
-  String email;
+  String phone;
   String password;
-  LoginRequest(this.email,this.password);
+  LoginRequest(this.phone,this.password);
 }

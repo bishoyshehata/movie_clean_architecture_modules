@@ -16,7 +16,7 @@ class LoginDataSourceImpl implements LoginDataSource {
   @override
   Future<Either<Failure,LoginResponse>> login(LoginRequest loginRequest) async{
     return safeApiCall( networkInfo, () async {
-      final response = await loginService.login(loginRequest.email, loginRequest.password);
+      final response = await loginService.login(loginRequest.phone, loginRequest.password);
       return response.data;
     });
   }

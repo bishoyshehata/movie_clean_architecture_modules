@@ -21,7 +21,7 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
     });
     // handle PasswordChanged event
     on<PasswordChanged>((event, emit) {
-      final passwordError = validateUserName(event.password);
+      final passwordError = validatePassword(event.password);
 
       emit(
         LoginInvalid(
@@ -33,14 +33,14 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
     // handle LoginButtonPressed event
     on<LoginButtonPressed>((event, emit) async{
       final userNameError = validateUserName(event.userName);
-      final passwordError = validateUserName(event.password);
+      final passwordError = validatePassword(event.password);
 
       if(userNameError ==null && passwordError ==null ){
         //it's safe to call login api
 
         emit(LoginLoading());
 
-        final result = await loginUseCase.execute(LoginRequest(userNameError!, passwordError!));
+        final result = await loginUseCase.execute(LoginRequest(event.userName,event.password));
         result.fold((failure){
           emit(LoginError(
               errorMessage: failure.message

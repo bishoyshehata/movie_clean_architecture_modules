@@ -1,22 +1,35 @@
-
 import 'package:data/error_handler/data_source_extension.dart';
 import 'package:data/error_handler/datasource.dart';
 import 'package:dio/dio.dart';
 import 'package:domain/entities/failure.dart';
 
-class Errorhandler implements Exception {
-  late Failure failure ;
-  Errorhandler.handle(dynamic error){
-    if(error is DioException){
+class ErrorHandler implements Exception {
+  late Failure failure;
+
+  ErrorHandler.handle(dynamic error) {
+    if (error is DioException) {
       failure = handleError(error);
-    }else{
+    } else {
       failure = DataSource.defaultError.getFailure();
     }
   }
 }
 
 Failure handleError(DioException error) {
-  switch (error.type){
+  final response = error.response?.data;
+
+  // محاولة استخراج الرسالة الحقيقية
+  String extractMessage() {
+    if (response is Map && response['messages'] != null) {
+      return response['messages'][0].toString();
+    } else if (error.message != null) {
+      return error.message!;
+    } else {
+      return "حدث خطأ غير متوقع";
+    }
+  }
+  switch (error.type) {
+
     case DioExceptionType.connectionTimeout:
       return DataSource.connectTimeOut.getFailure();
     case DioExceptionType.sendTimeout:
@@ -32,7 +45,7 @@ Failure handleError(DioException error) {
       final statusCode = error.response?.statusCode ?? 0;
       switch (statusCode) {
         case 400:
-          return DataSource.defaultError.getFailure();
+          return Failure(statusCode, extractMessage());
         case 401:
           return DataSource.unauthorised.getFailure();
         case 403:
@@ -42,7 +55,7 @@ Failure handleError(DioException error) {
         case 204:
           return DataSource.noContent.getFailure();
         default:
-          return Failure(statusCode, error.response?.statusMessage ?? "");
+          return DataSource.defaultError.getFailure();
       }
     case DioExceptionType.cancel:
       return DataSource.cancelled.getFailure();
@@ -54,9 +67,14 @@ Failure handleError(DioException error) {
       return DataSource.defaultError.getFailure();
 
     default:
-      if(error.response!=null&&error.response?.statusCode!=null&&error.response?.statusMessage!=null){
-        return Failure(error.response?.statusCode ?? 0, error.response?.statusMessage ?? "");
-      }else{
+      if (error.response != null &&
+          error.response?.statusCode != null &&
+          error.response?.statusMessage != null) {
+        return Failure(
+          error.response?.statusCode ?? 0,
+          error.response?.statusMessage ?? "",
+        );
+      } else {
         return DataSource.defaultError.getFailure();
       }
   }

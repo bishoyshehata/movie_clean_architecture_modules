@@ -12,7 +12,7 @@ Future<Either<Failure, T >> safeApiCall<T>(NetworkInfo networkInfo , Future<T> F
       final response = await apiCall();
       return Right(response);
     }catch(error){
-      return Left(Errorhandler.handle(error).failure);
+      return Left(ErrorHandler.handle(error).failure);
     }
   }
   else {

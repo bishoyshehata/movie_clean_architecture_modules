@@ -10,7 +10,7 @@ part of 'login_service.dart';
 
 class _LoginService implements LoginService {
   _LoginService(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://minafarid.mocklab.io';
+    baseUrl ??= 'https://valet.vps.kirellos.com/api/Valet';
   }
 
   final Dio _dio;
@@ -21,18 +21,18 @@ class _LoginService implements LoginService {
 
   @override
   Future<HttpResponse<LoginResponse>> login(
-    String email,
+    String phone,
     String password,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = {'email': email, 'password': password};
+    final _data = {'phone': phone, 'password': password};
     final _options = _setStreamType<HttpResponse<LoginResponse>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/customers/login',
+            '/login',
             queryParameters: queryParameters,
             data: _data,
           )

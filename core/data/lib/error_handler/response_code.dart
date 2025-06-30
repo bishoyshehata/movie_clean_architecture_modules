@@ -16,4 +16,5 @@ class ResponseCode {
   static int cacheError = -5;
   static int noInternetConnection = -6;
   static int defaultError = -7;
+    
 }
