@@ -22,12 +22,12 @@ class LoginScreen extends StatelessWidget {
       ),
       body: BlocProvider(
         create: (context) => LoginBloc(loginUseCase),
-        child: BlocBuilder<LoginBloc, LoginStates>(builder: (context, state) {
+        child: BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
           return Padding(
             padding: EdgeInsets.all(16.0),
             child:
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              TextField(
+              TextFormField(
                 controller: usernameController,
                 onChanged: (value) {
                   context.read<LoginBloc>().add(UserNameChanged(value));
@@ -39,7 +39,7 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
 
-              TextField(
+              TextFormField(
                 controller: passwordController,
                 onChanged: (value) {
                   context.read<LoginBloc>().add(PasswordChanged(value));

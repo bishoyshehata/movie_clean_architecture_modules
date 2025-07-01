@@ -4,7 +4,7 @@ import 'package:login/domain/usecase/login_usecase_impl.dart';
 import 'package:login/presentation/controller/login_events.dart';
 import 'package:login/presentation/controller/login_states.dart';
 
-class LoginBloc extends Bloc<LoginEvents, LoginStates> {
+class LoginBloc extends Bloc<LoginEvents, LoginState> {
   LoginUseCaseImpl loginUseCase;
 
   LoginBloc(this.loginUseCase) : super(LoginInitial()) {
@@ -48,7 +48,7 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
           print("Error ${failure.message}");
           print("Error ${failure.statusCode}");
         }, (response){
-          emit(LoginSuccess(loginModel: response));
+          emit(LoginSuccess());
           print("success $response");
           print("success ${response.name}");
 
