@@ -13,6 +13,22 @@ class StateRenderer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+// to make sure that when rebuild there won't be any duplicated dialogs
+    if(_isDialogShowing){
+      _isDialogShowing = false;
+      return Container();
+    }
+// to make sure that when rebuild there won't be any duplicated dialogs
+    if(_isDialogDismissed){
+      _isDialogDismissed = false;
+      return Container();
+    }
+// to make sure that when rebuild there won't be any old dialogs  &&&& it works when the content come true 
+    if(_isThereCurrentDialogShowing(context)){
+      Navigator.of(context,rootNavigator: true).pop(true);
+    }
+
+
     switch(stateRendererType){
       case StateRendererType.popupLoadingState:
         return _showPopupLoadingDialog(context, _buildLoadingWidget());
@@ -21,20 +37,21 @@ class StateRenderer extends StatelessWidget {
       case StateRendererType.fullScreenLoadingState:
         return _buildFullScreenContent(_buildLoadingWidget());
       case StateRendererType.fullScreenErrorState:
-        return _buildFullScreenContent(_buildErrorWidget(showRetryButton: true));
+        // to close the loading dialog and start the error dialog ///// important tests
+        if(_isThereCurrentDialogShowing(context)){
+          Navigator.of(context,rootNavigator: true).pop(true);
+          return Container();
+        }else{
+          return _buildFullScreenContent(_buildErrorWidget(showRetryButton: true));
+        }
       case StateRendererType.emptyState:
         return _showPopupLoadingDialog(context, _buildEmptyWidget());
-
-      case StateRendererType.contentState:
-        // TODO: Handle this case.
-        throw UnimplementedError();
-      case StateRendererType.none:
-        // TODO: Handle this case.
-        throw UnimplementedError();
+      default:
+        return Container();
     }
   }
 
-  _isThereCurrentDialogShowing(BuildContext context)=> ModalRoute.of(context)?.isCurrent !=true;
+  _isThereCurrentDialogShowing(BuildContext context)=> ModalRoute.of(context)?.isCurrent !=true; // it's used to check if the dialog is appeared or not
 
   Widget _buildLoadingWidget(){
     return Column(
