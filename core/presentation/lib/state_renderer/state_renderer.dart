@@ -17,10 +17,9 @@ class StateRenderer extends StatelessWidget {
       case StateRendererType.popupLoadingState:
         return _showPopupLoadingDialog(context, _buildLoadingWidget());
       case StateRendererType.popupErrorState:
-       return _showPopupErrorDialog(context, _buildErrorWidget());
+       return _showPopupErrorDialog(context, _buildErrorWidget()  );
       case StateRendererType.fullScreenLoadingState:
-        // TODO: Handle this case.
-        throw UnimplementedError();
+        return _buildFullScreenLoading(_buildErrorWidget());
       case StateRendererType.fullScreenErrorState:
         // TODO: Handle this case.
         throw UnimplementedError();
@@ -48,6 +47,14 @@ class StateRenderer extends StatelessWidget {
       ],
     );
   }
+  Widget _buildFullScreenLoading(Widget buildLoadingWidget){
+    return Container(
+      color: Colors.white,
+     child: Center(
+       child: buildLoadingWidget,
+     ),
+    );
+  }
   Widget _buildErrorWidget(){
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -60,7 +67,7 @@ class StateRenderer extends StatelessWidget {
       ],
     );
   }
-  // it can show popup loading or popup error depending on "content"
+  // it  show popup loading
   Widget _showPopupLoadingDialog(BuildContext context, Widget content) {
     if (!_isThereCurrentDialogShowing(context)) {
       _isDialogShowing = true;
@@ -73,7 +80,7 @@ class StateRenderer extends StatelessWidget {
     }
     return Container(); // keep screen content behind the dialog
   }
-
+  // it  show popup error
   Widget _showPopupErrorDialog(BuildContext context, Widget content) {
     if (!_isThereCurrentDialogShowing(context)) {
       _isDialogShowing = true;
