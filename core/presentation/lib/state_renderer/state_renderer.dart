@@ -8,8 +8,8 @@ class StateRenderer extends StatelessWidget {
   var _isDialogShowing = false;
   final String title;
   final String message;
-
-    StateRenderer({super.key, required this.stateRendererType, this.title = 'Error', this.message ='Loading...'});
+  final VoidCallback? retryActionFunction;
+    StateRenderer({super.key, required this.stateRendererType, this.title = 'Error', this.message ='Loading...',  this.retryActionFunction});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +19,9 @@ class StateRenderer extends StatelessWidget {
       case StateRendererType.popupErrorState:
        return _showPopupErrorDialog(context, _buildErrorWidget()  );
       case StateRendererType.fullScreenLoadingState:
-        return _buildFullScreenLoading(_buildErrorWidget());
+        return _buildFullScreenContent(_buildLoadingWidget());
       case StateRendererType.fullScreenErrorState:
-        // TODO: Handle this case.
-        throw UnimplementedError();
+        return _buildFullScreenContent(_buildErrorWidget(showRetryButton: true));
       case StateRendererType.emptyState:
         // TODO: Handle this case.
         throw UnimplementedError();
@@ -47,15 +46,15 @@ class StateRenderer extends StatelessWidget {
       ],
     );
   }
-  Widget _buildFullScreenLoading(Widget buildLoadingWidget){
+  Widget _buildFullScreenContent(Widget content){
     return Container(
       color: Colors.white,
      child: Center(
-       child: buildLoadingWidget,
+       child: content,
      ),
     );
   }
-  Widget _buildErrorWidget(){
+  Widget _buildErrorWidget({bool showRetryButton = false}){
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -63,7 +62,11 @@ class StateRenderer extends StatelessWidget {
         SizedBox(height: 10,),
         Text(title,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
         SizedBox(height: 10,),
-        Text(message)
+        Text(message),
+        SizedBox(height: 10,),
+        if(showRetryButton)
+          ElevatedButton(onPressed: retryActionFunction, child:Text("Retry"))
+
       ],
     );
   }
