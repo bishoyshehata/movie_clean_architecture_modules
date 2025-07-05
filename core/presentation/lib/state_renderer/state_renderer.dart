@@ -23,7 +23,7 @@ class StateRenderer extends StatelessWidget {
       _isDialogDismissed = false;
       return Container();
     }
-// to make sure that when rebuild there won't be any old dialogs  &&&& it works when the content come true 
+// to make sure that when rebuild there won't be any old dialogs  &&&& it works when the content come true
     if(_isThereCurrentDialogShowing(context)){
       Navigator.of(context,rootNavigator: true).pop(true);
     }
