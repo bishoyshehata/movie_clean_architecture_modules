@@ -23,8 +23,8 @@ class StateRenderer extends StatelessWidget {
       case StateRendererType.fullScreenErrorState:
         return _buildFullScreenContent(_buildErrorWidget(showRetryButton: true));
       case StateRendererType.emptyState:
-        // TODO: Handle this case.
-        throw UnimplementedError();
+        return _showPopupLoadingDialog(context, _buildEmptyWidget());
+
       case StateRendererType.contentState:
         // TODO: Handle this case.
         throw UnimplementedError();
@@ -43,6 +43,16 @@ class StateRenderer extends StatelessWidget {
         CircularProgressIndicator(),
         SizedBox(height: 10,),
         Text("Loaing...")
+      ],
+    );
+  }
+  Widget _buildEmptyWidget(){
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(Icons.inbox, size: 50,color: Colors.grey,),
+        SizedBox(height: 10,),
+        Text("No data available...")
       ],
     );
   }
