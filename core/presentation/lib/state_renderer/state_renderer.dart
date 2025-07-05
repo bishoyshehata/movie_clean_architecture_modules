@@ -103,7 +103,7 @@ class StateRenderer extends StatelessWidget {
     if (!_isThereCurrentDialogShowing(context)) {
       _isDialogShowing = true;
 
-      WidgetsBinding.instance.addPersistentFrameCallback((_) => showDialog(       // it's used to make sure that all the frames ended and begin after this .
+      WidgetsBinding.instance.addPostFrameCallback((_) => showDialog(       // it's used to make sure that all the frames ended and begin after this .
           context: context,
           builder: (context) => AlertDialog(
             content: content,
@@ -116,7 +116,7 @@ class StateRenderer extends StatelessWidget {
     if (!_isThereCurrentDialogShowing(context)) {
       _isDialogShowing = true;
 
-      WidgetsBinding.instance.addPersistentFrameCallback((_) => showDialog(       // it's used to make sure that all the frames ended and begin after this .
+      WidgetsBinding.instance.addPostFrameCallback((_) => showDialog(       // it's used to make sure that all the frames ended and begin after this .
           context: context,
           builder: (context) => AlertDialog(
             content: content,

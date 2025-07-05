@@ -1,6 +1,12 @@
-# melos_managed_dependency_overrides: datastore,domain
+# melos_managed_dependency_overrides: datastore,domain,extensions,login,presentation
 dependency_overrides:
   datastore:
     path: ../datastore
   domain:
     path: ../domain
+  extensions:
+    path: ../extensions
+  login:
+    path: ../../features/auth/login
+  presentation:
+    path: ../presentation
