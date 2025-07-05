@@ -5,7 +5,7 @@ class LoginState extends Equatable {
   final String? userNameError;
   final String? passwordError;
   final String? errorMessage;
-  final StateRendererType? loginState;
+  final StateRendererType loginState;
 
   const LoginState(
       {
@@ -25,7 +25,7 @@ class LoginState extends Equatable {
         userNameError: userNameError,
         passwordError: passwordError,
         errorMessage: errorMessage,
-        loginState: loginState
+        loginState: loginState = StateRendererType.contentState
     );
   }
 

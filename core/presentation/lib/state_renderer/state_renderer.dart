@@ -46,6 +46,7 @@ class StateRenderer extends StatelessWidget {
         }
       case StateRendererType.emptyState:
         return _showPopupLoadingDialog(context, _buildEmptyWidget());
+      case StateRendererType.contentState:
       default:
         return Container();
     }
