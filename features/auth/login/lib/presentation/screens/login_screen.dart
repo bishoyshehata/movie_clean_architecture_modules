@@ -8,7 +8,6 @@ import 'package:presentation/state_renderer/state_renderer_type.dart';
 import '../../domain/usecase/login_usecase_impl.dart';
 import '../controller/login_bloc.dart';
 
-
 class LoginScreen extends StatelessWidget {
   final loginUseCase = getIt<LoginUseCaseImpl>();
   final TextEditingController usernameController = TextEditingController();
@@ -19,48 +18,57 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Login"),
-      ),
+      appBar: AppBar(title: Text("Login")),
       body: BlocProvider(
         create: (context) => LoginBloc(loginUseCase),
-        child: BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
-          return Stack(
-            children: [
-              _buildMainLoginScreen(context,state),
-              _buildStateRendererWidget(context,state)
-            ],
-          );
-        }),
+        child: BlocConsumer<LoginBloc, LoginState>(
+
+          listener: (context, state) {
+            // if (state is LoginSuccess) {
+            //   // روح للشاشة التالية بعد النجاح
+            //   Navigator.pushReplacement(
+            //     context,
+            //     MaterialPageRoute(
+            //       builder: (_) => const HomeScreen(),
+            //     ), // أو MainScreen
+            //   );
+            // }
+          },
+          builder: (context, state) {
+            return Stack(
+              children: [
+                _buildMainScreenContent(context, state),
+                _buildStateRenderer(context, state)
+              ],
+            );
+          },
+
+        ),
       ),
     );
   }
-  Widget _buildMainLoginScreen(BuildContext context , LoginState state){
+
+  Widget _buildMainScreenContent(BuildContext context, LoginState state) {
     return Padding(
       padding: EdgeInsets.all(16.0),
-      child:
-      Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        TextFormField(
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        TextField(
           controller: usernameController,
           onChanged: (value) {
             context.read<LoginBloc>().add(UserNameChanged(value));
           },
           decoration: InputDecoration(
               labelText: "Username",
-              errorText:
-              state is LoginInvalid ? state.userNameError : null),
+              errorText: state is LoginInvalid ? state.userNameError : null),
         ),
-        const SizedBox(height: 20),
-
-        TextFormField(
+        TextField(
           controller: passwordController,
           onChanged: (value) {
             context.read<LoginBloc>().add(PasswordChanged(value));
           },
           decoration: InputDecoration(
               labelText: "Password",
-              errorText:
-              state is LoginInvalid ? state.passwordError : null),
+              errorText: state is LoginInvalid ? state.passwordError : null),
         ),
         const SizedBox(height: 20),
         ElevatedButton(
@@ -75,22 +83,20 @@ class LoginScreen extends StatelessWidget {
       ]),
     );
   }
-  Widget _buildStateRendererWidget(BuildContext context , LoginState state){
 
-    if(state.loginState == StateRendererType.contentState){
-      // when content is displayed we don't want to show any overlay
+  Widget _buildStateRenderer(BuildContext context, LoginState state) {
+    if (state.stateRendererType == StateRendererType.contentState) {
+      // we don't want to display any overlay when the content of the screen is displayed
       return SizedBox.shrink();
     }
 
-
-    return StateRenderer(stateRendererType: state.loginState,
-    message: state is LoginError ? state.errorMessage ?? "" : "",
-      retryActionFunction: (){
+    return StateRenderer(
+      stateRendererType: state.stateRendererType,
+      message: (state is LoginError) ? state.errorMessage ?? "" : "",
+      retryActionFunction: () {
         final username = usernameController.text;
         final password = passwordController.text;
-        context
-            .read<LoginBloc>()
-            .add(LoginButtonPressed(username, password));
+        context.read<LoginBloc>().add(LoginButtonPressed(username, password));
       },
     );
   }
