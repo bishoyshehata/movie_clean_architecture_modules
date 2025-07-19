@@ -18,6 +18,8 @@ dependencies:
     path: features/settings/app_settings
   login:
     path: features/auth/login
+  navigator:
+    path: core/navigator
   get_it:
   injectable:
   flutter:
