@@ -6,6 +6,8 @@ import 'package:movie_clean_architecture_modules/di/injection.dart';
 import 'package:navigator/bloc/navigation_bloc.dart';
 import 'package:navigator/bloc/navigation_events.dart';
 import 'package:navigator/navigation_module.dart';
+import 'package:navigator/navigation_routes.dart';
+import 'package:navigator/navigation_types.dart';
 import 'package:presentation/state_renderer/state_renderer.dart';
 import 'package:presentation/state_renderer/state_renderer_type.dart';
 import '../../domain/usecase/login_usecase_impl.dart';
@@ -25,11 +27,10 @@ class LoginScreen extends StatelessWidget {
       body: BlocProvider(
         create: (context) => LoginBloc(loginUseCase),
         child: BlocConsumer<LoginBloc, LoginState>(
-
           listener: (context, state) {
             if (state is LoginSuccess) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
-              _navigateToHome(context);
+                _navigateToHome(context);
               });
             }
           },
@@ -37,51 +38,59 @@ class LoginScreen extends StatelessWidget {
             return Stack(
               children: [
                 _buildMainScreenContent(context, state),
-                _buildStateRenderer(context, state)
+                _buildStateRenderer(context, state),
               ],
             );
           },
-
         ),
       ),
     );
   }
+
   void _navigateToHome(BuildContext context) {
     context.read<NavigationBloc>().add(NavigateToHome());
+    // context.read<NavigationBloc>().add(NavigateToRoute(NavigationRoutes.home, NavigationType.pushReplacement));
   }
+
   Widget _buildMainScreenContent(BuildContext context, LoginState state) {
     return Padding(
       padding: EdgeInsets.all(16.0),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        TextField(
-          controller: usernameController,
-          onChanged: (value) {
-            context.read<LoginBloc>().add(UserNameChanged(value));
-          },
-          decoration: InputDecoration(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextField(
+            controller: usernameController,
+            onChanged: (value) {
+              context.read<LoginBloc>().add(UserNameChanged(value));
+            },
+            decoration: InputDecoration(
               labelText: "Username",
-              errorText: state is LoginInvalid ? state.userNameError : null),
-        ),
-        TextField(
-          controller: passwordController,
-          onChanged: (value) {
-            context.read<LoginBloc>().add(PasswordChanged(value));
-          },
-          decoration: InputDecoration(
+              errorText: state is LoginInvalid ? state.userNameError : null,
+            ),
+          ),
+          TextField(
+            controller: passwordController,
+            onChanged: (value) {
+              context.read<LoginBloc>().add(PasswordChanged(value));
+            },
+            decoration: InputDecoration(
               labelText: "Password",
-              errorText: state is LoginInvalid ? state.passwordError : null),
-        ),
-        const SizedBox(height: 20),
-        ElevatedButton(
+              errorText: state is LoginInvalid ? state.passwordError : null,
+            ),
+          ),
+          const SizedBox(height: 20),
+          ElevatedButton(
             onPressed: () {
               final username = usernameController.text;
               final password = passwordController.text;
-              context
-                  .read<LoginBloc>()
-                  .add(LoginButtonPressed(username, password));
+              context.read<LoginBloc>().add(
+                LoginButtonPressed(username, password),
+              );
             },
-            child: Text("Login"))
-      ]),
+            child: Text("Login"),
+          ),
+        ],
+      ),
     );
   }
 
