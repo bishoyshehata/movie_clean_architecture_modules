@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:login/presentation/controller/login_events.dart';
 import 'package:login/presentation/controller/login_states.dart';
 import 'package:movie_clean_architecture_modules/di/injection.dart';
+import 'package:navigator/bloc/navigation_bloc.dart';
+import 'package:navigator/bloc/navigation_events.dart';
+import 'package:navigator/navigation_module.dart';
 import 'package:presentation/state_renderer/state_renderer.dart';
 import 'package:presentation/state_renderer/state_renderer_type.dart';
 import '../../domain/usecase/login_usecase_impl.dart';
@@ -24,15 +27,11 @@ class LoginScreen extends StatelessWidget {
         child: BlocConsumer<LoginBloc, LoginState>(
 
           listener: (context, state) {
-            // if (state is LoginSuccess) {
-            //   // روح للشاشة التالية بعد النجاح
-            //   Navigator.pushReplacement(
-            //     context,
-            //     MaterialPageRoute(
-            //       builder: (_) => const HomeScreen(),
-            //     ), // أو MainScreen
-            //   );
-            // }
+            if (state is LoginSuccess) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+              _navigateToHome(context);
+              });
+            }
           },
           builder: (context, state) {
             return Stack(
@@ -47,7 +46,9 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-
+  void _navigateToHome(BuildContext context) {
+    context.read<NavigationBloc>().add(NavigateToHome());
+  }
   Widget _buildMainScreenContent(BuildContext context, LoginState state) {
     return Padding(
       padding: EdgeInsets.all(16.0),
