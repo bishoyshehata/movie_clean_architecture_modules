@@ -40,7 +40,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i839.LoginRepository>(
       () => loginModule.provideLoginRepository(gh<_i926.LoginDataSource>()),
     );
-    gh.lazySingleton<_i276.LoginUseCaseImpl>(
+    gh.lazySingleton<_i276.LoginUseCase>(
       () => loginModule.provideLoginUseCase(gh<_i839.LoginRepository>()),
     );
     return this;

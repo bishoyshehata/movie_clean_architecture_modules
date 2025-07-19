@@ -28,7 +28,7 @@ abstract class LoginModule {
     return LoginRepositoryImpl(loginDataSource);
   }
   @lazySingleton // when we need it ,we have to provide it
-  LoginUseCaseImpl provideLoginUseCase(LoginRepository loginRepository){
-    return LoginUseCaseImpl(loginRepository);
+  LoginUseCase provideLoginUseCase(LoginRepository loginRepository){
+    return LoginUseCase(loginRepository);
   }
 }

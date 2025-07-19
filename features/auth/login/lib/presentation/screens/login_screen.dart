@@ -9,7 +9,7 @@ import '../../domain/usecase/login_usecase_impl.dart';
 import '../controller/login_bloc.dart';
 
 class LoginScreen extends StatelessWidget {
-  final loginUseCase = getIt<LoginUseCaseImpl>();
+  final loginUseCase = getIt<LoginUseCase>();
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 

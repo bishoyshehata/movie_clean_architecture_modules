@@ -11,7 +11,7 @@ class Calculator {
 }
 
 void doLogin()async {
-  final loginUseCase = getIt<LoginUseCaseImpl>();
+  final loginUseCase = getIt<LoginUseCase>();
   final loginRequest = LoginRequest("bisho@gmail.com", "123456");
 
   final result = await loginUseCase.execute(loginRequest);

@@ -5,7 +5,7 @@ import 'package:login/presentation/controller/login_events.dart';
 import 'package:login/presentation/controller/login_states.dart';
 
 class LoginBloc extends Bloc<LoginEvents, LoginState> {
-  LoginUseCaseImpl loginUseCase;
+  LoginUseCase loginUseCase;
 
   LoginBloc(this.loginUseCase) : super(LoginInitial()) {
     // handle UserNameChanged event
