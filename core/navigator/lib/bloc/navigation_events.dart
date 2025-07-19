@@ -1,4 +1,5 @@
-import 'package:navigator/navigation_types.dart';
+
+import '../navigation_types.dart';
 
 abstract class NavigationEvents {}
 

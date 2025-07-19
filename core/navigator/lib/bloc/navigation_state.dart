@@ -1,4 +1,4 @@
-import 'navigation_types.dart';
+import '../navigation_types.dart';
 
 class NavigationState {
   final String routeName;
