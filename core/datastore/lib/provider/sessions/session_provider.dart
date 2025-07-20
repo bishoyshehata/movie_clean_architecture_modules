@@ -4,4 +4,8 @@ abstract class SessionProvider {
   String getRefreshToken();
   String getClientId();
   String getUserId();
+
+  void setAccessToken(String accessToken);
+  void setRefreshToken(String refreshToken);
+  void setUserId(String userId);
 }

@@ -10,10 +10,16 @@ environment:
   sdk: ^3.8.1
 
 dependencies:
+  data:
+    path: core/data
   datastore:
     path: core/datastore
   app_settings:
     path: features/settings/app_settings
+  login:
+    path: features/auth/login
+  navigator:
+    path: core/navigator
   get_it:
   injectable:
   flutter:
