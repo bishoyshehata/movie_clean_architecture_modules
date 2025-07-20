@@ -24,6 +24,7 @@ class HomeNavigatinoView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // This prevents the default back button from showing up
         automaticallyImplyLeading: false,
 
         title: BlocBuilder<HomeBloc, HomeState>(
