@@ -9,11 +9,11 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationState> {
   NavigationBloc() : super(NavigationState('',NavigationType.push)){
 
     on<NavigateToHome> ((event, emit) {
-      emit(NavigationState(NavigationRoutes.home, NavigationType.pushReplacement));
+      emit(NavigationState(NavigationRoutes.home, NavigationType.replace));
     });
 
     on<NavigateToLogin>((event, emit) {
-      emit(NavigationState(NavigationRoutes.login, NavigationType.pushReplacement));
+      emit(NavigationState(NavigationRoutes.login, NavigationType.replace));
     });
       // Handle custom navigation events
     on<NavigateToRoute>((event, emit) {

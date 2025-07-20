@@ -1,6 +1,6 @@
 enum NavigationType {
   push,
-  pushReplacement,
+  replace,
   pop,
 
 }

@@ -24,6 +24,8 @@ class HomeNavigatinoView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+
         title: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
             return Text(state.selectedIndex == 0 ? "Movies" : "Settings");

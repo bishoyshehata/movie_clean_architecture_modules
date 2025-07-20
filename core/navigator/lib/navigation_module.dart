@@ -34,10 +34,10 @@ class NavigationModule extends StatelessWidget {
           listener: (context, state) {
             if (state.routeName.isNotEmpty) {
               if (state.navigationType == NavigationType.push) {
-                Navigator.pushNamed(context, state.routeName);
+                Navigator.of(context).pushNamed(state.routeName);
               } else if (state.navigationType ==
-                  NavigationType.pushReplacement) {
-                Navigator.pushReplacementNamed(context, state.routeName);
+                  NavigationType.replace) {
+                Navigator.of(context).pushReplacementNamed(state.routeName);
               } else if (state.navigationType == NavigationType.pop) {
                 Navigator.of(context, rootNavigator: true).pop(true);
               }
