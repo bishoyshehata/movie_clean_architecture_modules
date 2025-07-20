@@ -30,7 +30,7 @@ class NavigationModule extends StatelessWidget {
         },
 
         home: BlocListener<NavigationBloc, NavigationState>(
-          child: LoginScreen(), // initial screen
+          child: HomeScreen(), // initial screen
           listener: (context, state) {
             if (state.routeName.isNotEmpty) {
               if (state.navigationType == NavigationType.push) {

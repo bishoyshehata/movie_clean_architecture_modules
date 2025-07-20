@@ -2,6 +2,7 @@ name: main
 description: "A new Flutter package project."
 version: 0.0.1
 homepage:
+publish_to: none
 
 environment:
   sdk: ^3.8.1
@@ -9,6 +10,10 @@ environment:
 
 dependencies:
   flutter_bloc: ^9.1.1
+  movies:
+    path: ../../movies
+  app_settings:
+    path: ../../settings/app_settings
   navigator:
     path: ../../../core/navigator
   flutter:
