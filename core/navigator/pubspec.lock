@@ -10,7 +10,7 @@ packages:
     source: hosted
     version: "0.3.2+1"
   app_settings:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       path: "../../features/settings/app_settings"
       relative: true
@@ -424,6 +424,13 @@ packages:
       relative: true
     source: path
     version: "1.0.0+1"
+  movies:
+    dependency: "direct overridden"
+    description:
+      path: "../../features/movies"
+      relative: true
+    source: path
+    version: "0.0.1"
   mustache_template:
     dependency: transitive
     description:
