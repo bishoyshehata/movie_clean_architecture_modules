@@ -9,11 +9,35 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-
+  dio: ^5.8.0+1
+  retrofit: ^4.4.2
+  json_annotation: ^4.9.0
+  dartz: ^0.10.1
+  injectable: ^2.5.0
+  flutter_bloc: ^9.1.1
+  equatable: ^2.0.7
+  navigator:
+    path: ../../core/navigator
+  extensions:
+    path: ../../core/extensions
+  domain:
+    path: ../../core/domain
+  datastore:
+    path: ../../core/datastore
+  data:
+    path: ../../core/data
+  presentation:
+    path: ../../core/presentation
+  movie_clean_architecture_modules:
+    path: ../..
   flutter:
     sdk: flutter
 
 dev_dependencies:
+  retrofit_generator: ^9.2.0
+  injectable_generator: ^2.7.0
+  build_runner: ^2.5.3
+  json_serializable: ^6.9.5
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
