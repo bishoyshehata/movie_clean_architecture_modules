@@ -42,7 +42,9 @@ class MoviesLoading extends MoviesState {
 
 // success state
 class MoviesSuccess extends MoviesState {
-  const MoviesSuccess():super(stateRendererType: StateRendererType.contentState);
+  final List<MovieModel>? movies;
+
+  const MoviesSuccess({required this.movies}):super(stateRendererType: StateRendererType.contentState);
 
 }
 
@@ -50,6 +52,6 @@ class MoviesSuccess extends MoviesState {
 class MoviesError extends MoviesState {
   final String? errorMessage;
 
-  const MoviesError({this.errorMessage})
+  const MoviesError({this.errorMessage })
       : super(errorMessage: errorMessage,stateRendererType: StateRendererType.fullScreenErrorState);
 }
