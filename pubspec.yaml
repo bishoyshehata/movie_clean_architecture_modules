@@ -20,6 +20,8 @@ dependencies:
     path: features/auth/login
   navigator:
     path: core/navigator
+  movies:
+    path: features/movies
   get_it:
   injectable:
   flutter:
