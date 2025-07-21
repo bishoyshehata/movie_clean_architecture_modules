@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:main/bloc/home_bloc.dart';
 import 'package:main/bloc/home_event.dart';
 import 'package:main/bloc/home_state.dart';
-import 'package:movies/movies.dart';
+import 'package:movies/presentation/movies.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
