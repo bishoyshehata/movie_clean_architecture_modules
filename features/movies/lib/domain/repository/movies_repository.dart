@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:domain/entities/failure.dart';
-import 'package:movies/data/model/movie_model.dart';
+
+import '../model/movie_model.dart';
 
 abstract class MoviesRepository {
   Future<Either<Failure,List<MovieModel>>> getMovies();

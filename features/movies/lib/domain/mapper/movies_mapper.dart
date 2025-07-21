@@ -1,8 +1,8 @@
 import 'package:extensions/constants/constants.dart';
 import 'package:extensions/extensions.dart';
 import 'package:movies/data/response/movie_response.dart';
-import '../../response/movies_response.dart';
-import '../movie_model.dart';
+import '../../../data/response/movies_response.dart';
+import '../model/movie_model.dart';
 
 // for Movie
 extension MovieResponseMapper on MovieResponse? {
