@@ -1,5 +1,4 @@
 import 'package:data/network_info/network_info.dart';
-import 'package:data/network_info/network_info_impl.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:login/data/datasource/login_datasource_impl.dart';
@@ -15,10 +14,7 @@ abstract class LoginModule {
   LoginService provideLoginService(Dio dio){
     return LoginService(dio);
   }
-  @lazySingleton // when we need it ,we have to provide it
-  NetworkInfo provideNetworkInfo(){
-    return NetworkInfoImpl();
-  }
+
   @lazySingleton // when we need it ,we have to provide it
   LoginDataSource provideLoginDataSource(LoginService loginService, NetworkInfo networkInfo){
     return LoginDataSourceImpl(loginService, networkInfo);
