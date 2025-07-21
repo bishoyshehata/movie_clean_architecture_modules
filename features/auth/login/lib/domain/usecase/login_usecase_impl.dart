@@ -4,7 +4,7 @@ import 'package:domain/entities/failure.dart';
 import 'package:domain/usecase/base_usecase.dart';
 import 'package:login/data/request/login_request.dart';
 import 'package:login/domain/models/login_model.dart';
-import 'package:login/domain/repository/login_repository.dart';
+import 'package:login/data/repository/login_repository.dart';
 
 class LoginUseCase implements BaseUseCase<LoginRequest,LoginModel>{
   final LoginRepository loginRepository;

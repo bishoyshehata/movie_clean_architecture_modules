@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:login/data/datasource/login_datasource_impl.dart';
 import 'package:login/data/repository/login_repository_impl.dart';
 import 'package:login/data/service/login_service.dart';
-import 'package:login/domain/repository/login_repository.dart';
+import 'package:login/data/repository/login_repository.dart';
 import 'package:login/domain/usecase/login_usecase_impl.dart';
 import '../datasource/login_datasource.dart';
 

@@ -16,7 +16,7 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:login/data/datasource/login_datasource.dart' as _i926;
 import 'package:login/data/di/login_module.dart' as _i802;
 import 'package:login/data/service/login_service.dart' as _i762;
-import 'package:login/domain/repository/login_repository.dart' as _i839;
+import 'package:login/data/repository/login_repository.dart' as _i839;
 import 'package:login/domain/usecase/login_usecase_impl.dart' as _i276;
 
 extension GetItInjectableX on _i174.GetIt {
