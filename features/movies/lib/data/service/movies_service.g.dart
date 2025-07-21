@@ -9,7 +9,10 @@ part of 'movies_service.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter
 
 class _MoviesService implements MoviesService {
-  _MoviesService(this._dio, {this.baseUrl, this.errorLogger});
+  _MoviesService(this._dio, {this.baseUrl, this.errorLogger}) {
+    baseUrl ??=
+        'https://api.mockfly.dev/mocks/5265cf39-de21-41d9-b5ce-9bd1e6956497';
+  }
 
   final Dio _dio;
 

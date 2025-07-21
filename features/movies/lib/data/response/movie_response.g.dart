@@ -11,10 +11,10 @@ MovieResponse _$MovieResponseFromJson(Map<String, dynamic> json) =>
       json['id'] as String?,
       json['poster_path'] as String?,
       json['vote_average'] as String?,
-      (json['original_title'] as num?)?.toInt(),
-      (json['title'] as num?)?.toInt(),
-      (json['overview'] as num?)?.toInt(),
-      (json['release_date'] as num?)?.toInt(),
+      json['original_title'] as String?,
+      json['title'] as String?,
+      json['overview'] as String?,
+      json['release_date'] as String?,
     );
 
 Map<String, dynamic> _$MovieResponseToJson(MovieResponse instance) =>

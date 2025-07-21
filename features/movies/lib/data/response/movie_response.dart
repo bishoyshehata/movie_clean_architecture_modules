@@ -17,16 +17,16 @@ class MovieResponse {
   String? voteAverage;
 
   @JsonKey(name: "original_title")
-  int? originalTitle;
+  String? originalTitle;
 
   @JsonKey(name: "overview")
-  int? overview;
+  String? overview;
 
   @JsonKey(name: "release_date")
-  int? releaseDate;
+  String? releaseDate;
 
   @JsonKey(name: "title")
-  int? title;
+  String? title;
 
   MovieResponse(
     this.id,
