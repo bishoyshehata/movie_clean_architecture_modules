@@ -425,7 +425,7 @@ packages:
     source: path
     version: "1.0.0+1"
   movies:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       path: "../../features/movies"
       relative: true

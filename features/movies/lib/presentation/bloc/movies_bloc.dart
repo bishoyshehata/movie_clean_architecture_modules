@@ -23,8 +23,13 @@ class MoviesBloc extends Bloc<MoviesEvents, MoviesState> {
           print("Error ${failure.statusCode}");
         },
         (movies) {
-          print("Movies success ${movies}");
-          emit(MoviesSuccess(movies: movies));
+          if(movies.isEmpty){
+            emit(MoviesEmpty());
+          }else{
+            print("Movies success ${movies}");
+            emit(MoviesSuccess(movies: movies));
+          }
+
         },
       );
     });
