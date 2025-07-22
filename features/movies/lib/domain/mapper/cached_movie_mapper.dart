@@ -2,7 +2,7 @@ import 'package:movies/domain/model/cached_movie_model.dart';
 import 'package:movies/domain/model/movie_model.dart';
 
 extension CacheToMovieMapper on CachedMovieModel {
-  MovieModel toDomain() {
+  MovieModel toMovie() {
     return MovieModel(
       id: id,
       posterPath: posterPath,
@@ -16,7 +16,7 @@ extension CacheToMovieMapper on CachedMovieModel {
 }
 
 extension MovieToCacheMapper on MovieModel {
-  CachedMovieModel toDomain() {
+  CachedMovieModel toCachedMovie() {
     return CachedMovieModel(
       id: id,
       posterPath: posterPath,
