@@ -30,7 +30,7 @@ class MoviesCachedDataSourceImpl implements MoviesCachedDataSource {
     if(cacheExpiryTimeString == null) return false;
 
     final cacheExpiryTime =DateTime.parse(cacheExpiryTimeString);
-    if(DateTime.now().isBefore(cacheExpiryTime))
+   return DateTime.now().isBefore(cacheExpiryTime);
 
   }
 
