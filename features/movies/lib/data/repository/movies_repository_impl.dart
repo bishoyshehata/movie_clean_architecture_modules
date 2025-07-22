@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:domain/entities/failure.dart';
 import 'package:movies/domain/mapper/movies_mapper.dart';
 import '../../domain/model/movie_model.dart';
-import '../datasource/movies_datasource.dart';
 import '../../domain/repository/movies_repository.dart';
+import '../datasource/remote/movies_datasource.dart';
 
 class MoviesRepositoryImpl implements MoviesRepository {
   final MoviesDataSource moviesDataSource;

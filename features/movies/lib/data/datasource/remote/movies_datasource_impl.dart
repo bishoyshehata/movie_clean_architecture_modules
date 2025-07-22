@@ -3,7 +3,7 @@ import 'package:data/network/api_safe_call.dart';
 import 'package:data/network_info/network_info.dart';
 import 'package:domain/entities/failure.dart';
 import 'package:movies/data/response/movies_response.dart';
-import '../service/movies_service.dart';
+import '../../service/movies_service.dart';
 import 'movies_datasource.dart';
 
 class MoviesDataSourceImpl implements MoviesDataSource {

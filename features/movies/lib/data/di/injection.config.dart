@@ -12,8 +12,8 @@ import 'package:data/network_info/network_info.dart' as _i131;
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
-import 'package:movies/data/datasource/movies_datasource.dart' as _i712;
-import 'package:movies/data/di/login_module.dart' as _i674;
+import 'package:movies/data/datasource/remote/movies_datasource.dart' as _i214;
+import 'package:movies/data/di/movie_module.dart' as _i649;
 import 'package:movies/data/service/movies_service.dart' as _i809;
 import 'package:movies/domain/repository/movies_repository.dart' as _i591;
 import 'package:movies/domain/usecase/movies_usecase.dart' as _i365;
@@ -32,17 +32,17 @@ extension GetItInjectableX on _i174.GetIt {
     final moviesModule = _$MoviesModule();
     gh.lazySingleton<_i809.MoviesService>(
         () => moviesModule.provideMoviesService(gh<_i361.Dio>()));
-    gh.lazySingleton<_i712.MoviesDataSource>(
+    gh.lazySingleton<_i214.MoviesDataSource>(
         () => moviesModule.provideMoviesDataSource(
               gh<_i809.MoviesService>(),
               gh<_i131.NetworkInfo>(),
             ));
     gh.lazySingleton<_i591.MoviesRepository>(() =>
-        moviesModule.provideMoviesRepository(gh<_i712.MoviesDataSource>()));
+        moviesModule.provideMoviesRepository(gh<_i214.MoviesDataSource>()));
     gh.lazySingleton<_i365.MoviesUseCase>(
         () => moviesModule.provideMoviesUseCase(gh<_i591.MoviesRepository>()));
     return this;
   }
 }
 
-class _$MoviesModule extends _i674.MoviesModule {}
+class _$MoviesModule extends _i649.MoviesModule {}

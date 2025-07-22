@@ -3,8 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import '../../domain/repository/movies_repository.dart';
 import '../../domain/usecase/movies_usecase.dart';
-import '../datasource/movies_datasource.dart';
-import '../datasource/movies_datasource_impl.dart';
+import '../datasource/remote/movies_datasource.dart';
+import '../datasource/remote/movies_datasource_impl.dart';
 import '../repository/movies_repository_impl.dart';
 import '../service/movies_service.dart';
 
