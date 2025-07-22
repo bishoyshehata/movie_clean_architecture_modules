@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 part 'cached_movie_model.g.dart';
 
 @HiveType(typeId: 1)
-class ChachedMovieModel {
+class CachedMovieModel {
 
   @HiveField(0)
   final String id;
@@ -25,7 +25,7 @@ class ChachedMovieModel {
   @HiveField(6)
   final String title;
 
-  ChachedMovieModel({
+  CachedMovieModel({
     required this.id,
     required this.posterPath,
     required this.voteAverage,

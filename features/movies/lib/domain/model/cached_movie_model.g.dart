@@ -6,17 +6,17 @@ part of 'cached_movie_model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class ChachedMovieModelAdapter extends TypeAdapter<ChachedMovieModel> {
+class CachedMovieModelAdapter extends TypeAdapter<CachedMovieModel> {
   @override
   final int typeId = 1;
 
   @override
-  ChachedMovieModel read(BinaryReader reader) {
+  CachedMovieModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return ChachedMovieModel(
+    return CachedMovieModel(
       id: fields[0] as String,
       posterPath: fields[1] as String,
       voteAverage: fields[2] as String,
@@ -28,7 +28,7 @@ class ChachedMovieModelAdapter extends TypeAdapter<ChachedMovieModel> {
   }
 
   @override
-  void write(BinaryWriter writer, ChachedMovieModel obj) {
+  void write(BinaryWriter writer, CachedMovieModel obj) {
     writer
       ..writeByte(7)
       ..writeByte(0)
@@ -53,7 +53,7 @@ class ChachedMovieModelAdapter extends TypeAdapter<ChachedMovieModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ChachedMovieModelAdapter &&
+      other is CachedMovieModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
