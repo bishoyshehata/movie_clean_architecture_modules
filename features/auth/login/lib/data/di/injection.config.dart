@@ -15,8 +15,8 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:login/data/datasource/login_datasource.dart' as _i926;
 import 'package:login/data/di/login_module.dart' as _i802;
+import 'package:login/data/repository/login_repository.dart' as _i635;
 import 'package:login/data/service/login_service.dart' as _i762;
-import 'package:login/domain/repository/login_repository.dart' as _i839;
 import 'package:login/domain/usecase/login_usecase_impl.dart' as _i276;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -27,7 +27,6 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final loginModule = _$LoginModule();
-    gh.lazySingleton<_i131.NetworkInfo>(() => loginModule.provideNetworkInfo());
     gh.lazySingleton<_i762.LoginService>(
       () => loginModule.provideLoginService(gh<_i361.Dio>()),
     );
@@ -37,11 +36,11 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i131.NetworkInfo>(),
       ),
     );
-    gh.lazySingleton<_i839.LoginRepository>(
+    gh.lazySingleton<_i635.LoginRepository>(
       () => loginModule.provideLoginRepository(gh<_i926.LoginDataSource>()),
     );
     gh.lazySingleton<_i276.LoginUseCase>(
-      () => loginModule.provideLoginUseCase(gh<_i839.LoginRepository>()),
+      () => loginModule.provideLoginUseCase(gh<_i635.LoginRepository>()),
     );
     return this;
   }

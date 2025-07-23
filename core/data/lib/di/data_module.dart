@@ -3,11 +3,17 @@ import 'package:datastore/provider/preferences/preferences_provider.dart';
 import 'package:datastore/provider/sessions/session_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import '../network_info/network_info.dart';
+import '../network_info/network_info_impl.dart';
 import 'data_module_strings.dart';
 
 @module
 abstract class DataModule {
 
+  @lazySingleton // when we need it ,we have to provide it
+  NetworkInfo provideNetworkInfo(){
+    return NetworkInfoImpl();
+  }
   //provide base url
   @Named(DataModuleStrings.baseUrlKey) // a tag fot this String
   String provideBaseUrl(PreferencesProvider preferencesProvider) => preferencesProvider.getBaseUrl();    /// preferences provider
